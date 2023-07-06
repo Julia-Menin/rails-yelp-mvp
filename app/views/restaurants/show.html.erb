@@ -1,7 +1,17 @@
-<h1><%= @restaurant.name %></h1>
+<div class = container>
+  <h1><%= @restaurant.name %></h1>
+  <h2>Address: <%= @restaurant.address%></h2>
+  <h2>Phone Number: <%= @restaurant.phone_number%></h2>
+  <h4>Type of Food: <%= @restaurant.category.capitalize%></h4>
 
-<h2><%= @restaurant.address%></h2>
-
-<div>
-<%= link_to "Back to main page", restaurants_path %>
+  <hr>
+  <h2>See the Reviews</h2>
+  <h2>Reviews: <% @restaurant.reviews.each do |review| %></h2>
+    <p> - <%= review.content.capitalize %></p>
+    <p> - <%= review.rating %></p>
+  <% end %>
+  <hr>
+  <%= link_to "Add a review", new_restaurant_review_path(@restaurant), class: "btn btn-warning" %>
+  <hr>
+  <%= link_to "Back to main page", root_path, class: "btn btn-success" %>
 </div>
